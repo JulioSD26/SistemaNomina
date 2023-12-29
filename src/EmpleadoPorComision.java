@@ -22,7 +22,7 @@ public class EmpleadoPorComision extends Empleado {
     // getters y setters
     public void setTarifaComision(double tarifa) {
         // que la tarifa sea mayor que 0 y menor que el procentaje dado (1%)
-        if (tarifa > 0.1 && tarifa < 1.0) {
+        if (tarifa > 0.01 && tarifa < 1.0) {
             tarifaComision = tarifa;
         }else {
             tarifa = 0.0;

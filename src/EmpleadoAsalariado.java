@@ -13,7 +13,7 @@ public class EmpleadoAsalariado extends Empleado{
     private double salario;
     
     // contructor
-    public EmpleadoAsalariado(String nombre, String apellido, String nss){
+    public EmpleadoAsalariado(String nombre, String apellido, String nss, double salario){
         super(nombre, apellido, nss);
         establecerSalarioSemanal(salario);
     }
