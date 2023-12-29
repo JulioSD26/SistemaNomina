@@ -52,8 +52,10 @@ public class EmpleadoPorHoras extends Empleado {
     
     @Override
     public double ingresos(){
+        // si trabajó menos de 40 hrs se le paga el sueldo por las horas
         if (obtenerHoras() <= 40) {
             return obtenerSueldo() * obtenerHoras();
+        // si trabajó horas extras se multiplican las horas extras por 1.5
         } else{
             return 40 * obtenerSueldo() + (obtenerHoras() - 40) * obtenerSueldo() * 1.5;
         }
