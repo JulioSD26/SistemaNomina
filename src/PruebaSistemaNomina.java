@@ -21,11 +21,40 @@ public class PruebaSistemaNomina {
         // Argumentos: nombre, apellido, nss, ventas, tarifa, salario
         EmpleadoBaseMasComision empleadoBaseMasComision = new EmpleadoBaseMasComision("Leonardo", "Dicaprio", "98765", 5000, .04, 300);
         
-        System.out.println("Empleados procesados por separado:\n");
+        // Polimorfismo
+        // Agregar a todos los empleados en un arreglo
+        Empleado [] empleados = new Empleado[4];
         
-        System.out.printf("%s\n%s: $%,.2f\n\n", empleadoAsalariado, "ingesos", empleadoAsalariado.ingresos());
-        System.out.printf("%s\n%s: $%,.2f\n\n", empleadoPorHoras, "ingesos", empleadoPorHoras.ingresos());
-        System.out.printf("%s\n%s: $%,.2f\n\n", empleadoPorComision, "ingesos", empleadoPorComision.ingresos());
-        System.out.printf("%s\n%s: $%,.2f\n\n", empleadoBaseMasComision, "ingesos", empleadoBaseMasComision.ingresos());
+        empleados[0] = empleadoAsalariado;
+        empleados[1] = empleadoPorHoras;
+        empleados[2] = empleadoPorComision;
+        empleados[3] = empleadoBaseMasComision;
+        
+        
+        System.out.println("Empleados procesados en forma polimórfica:\n");
+        
+        // procesa en forma genérica a cada elemento en el arreglo de empleados
+        for (Empleado empleadoActual: empleados) {
+            System.out.println(empleadoActual); // invoca a toString
+            
+            if (empleadoActual instanceof EmpleadoBaseMasComision) {
+                
+                // conversión descendente de la referencia de Empleado
+                // a una referencia EmpleadoBaseMasComision
+                EmpleadoBaseMasComision empleado = (EmpleadoBaseMasComision) empleadoActual;
+                
+                double salarioBaseAnterior = empleado.getSalarioBase();
+                empleado.setSalarioBase(1.10 * salarioBaseAnterior);
+                
+                System.out.printf("El nuevo salario base con 10%% de aumento es: $%,.2f\n", empleado.getSalarioBase());
+            }
+            System.out.printf("ingresos $%,.2f\n\n", empleadoActual.ingresos());
+        }
+        
+        // obtiene el nombre del tipo de cada objeto en el arreglo de empleados
+        for (int i = 0; i < empleados.length; i++) {
+            System.out.printf("El empleado %d es un %s\n", i, empleados[i].getClass().getName());
+            
+        }
     }
 }
