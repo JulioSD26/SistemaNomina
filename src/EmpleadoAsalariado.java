@@ -15,6 +15,7 @@ public class EmpleadoAsalariado extends Empleado{
     // contructor
     public EmpleadoAsalariado(String nombre, String apellido, String nss){
         super(nombre, apellido, nss);
+        establecerSalarioSemanal(salario);
     }
     // clase abstracta que necesita ser modificada
     @Override
